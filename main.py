@@ -1,8 +1,9 @@
 from stats import count_words, count_characters, sort_characters
 
+import sys
 
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     word_count = count_words(text)
     char_dict = count_characters(text)
@@ -26,5 +27,8 @@ def print_report(book_path, word_count, char_count):
         print(f"{line['char']}: {line['num']}")
     print("============= END ===============")
 
-
-main()
+if len(sys.argv) < 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+else:
+    main()
