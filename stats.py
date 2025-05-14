@@ -12,3 +12,15 @@ def count_characters(text):
         else:
             dictionary[char] = 1
     return dictionary
+
+
+def sort_characters(dict_unsorted):
+    list_char = []
+    for k in dict_unsorted:
+        if k.isalpha():
+            dict_temp = {"char": k, "num": dict_unsorted[k]}
+            list_char.append(dict_temp)
+    def sort_by(dict):
+        return dict["num"]
+    list_char.sort(reverse=True, key=sort_by)
+    return list_char
